@@ -14,4 +14,10 @@ test("form header renders", () => {
 
 });
 
-test("form shows success message on submit with form details", () => {});
+test("form shows success message on submit with form details", () => {
+    render(<CheckoutForm />);
+    const firstName = screen.getByLabelText(/First Name:/i)
+    const lastName = screen.getByLabelText(/Last Name/i);
+    const address = screen.getByLabelText(/Address/i);
+    
+});
