@@ -19,5 +19,20 @@ test("form shows success message on submit with form details", () => {
     const firstName = screen.getByLabelText(/First Name:/i)
     const lastName = screen.getByLabelText(/Last Name/i);
     const address = screen.getByLabelText(/Address/i);
+    const city = screen.getByLabelText(/City/i);
+    const state = screen.getByLabelText(/State/i);
+    const zip = screen.getByLabelText(/Zip/i);
+    const button = screen.getByRole('button');
+    //  adding userEvent to check this test
     
+    userEvent.type(firstName, 'Rimsha');
+    userEvent.type(lastName, 'Saleem');
+    userEvent.type(address, '356 41st Avenue');
+    userEvent.type(city,'Richmond');
+    userEvent.type(state, 'California');
+    userEvent.type(zip, '2345');
+    userEvent.click(button);
+    const successForm = screen.getByText(/You have ordered some plants! Woo-hoo!/i)
+    expect(successForm).toBeInTheDocument();
+
 });
